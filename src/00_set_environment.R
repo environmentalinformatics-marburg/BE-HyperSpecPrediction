@@ -13,6 +13,7 @@ path <- list(data = path_data,
              rdata = paste0(path_data, "rdata/"),
              temp = paste0(path_data, "temp/"))
 rm(path_data)
+
 # Set libraries ----------------------------------------------------------------
 library(biodivTools) # devtools::install_github("environmentalinformatics-marburg/biodivTools")
 library(doParallel)
@@ -30,5 +31,21 @@ library(sp)
 
 # Other settings ---------------------------------------------------------------
 rasterOptions(tmpdir = path$temp)
+
+
+# initialise database ---------------------------------------------------------
+
+# connect to server
+rs <- RemoteSensing$new("http://137.248.191.215:8081",
+                        readChar("~/ma/connect_db.txt", file.info("~/ma/connect_db.txt")$size))
+
+# access alb grassland plots --------------------------------------------------
+rois <- rs$roi_group("be_alb_roi")
+rois <- rois[substr(rois$name, 1, 3) == "AEG",]
+# get list of the extents of all plots
+re <- lapply(rois$polygon, extent)
+
+
+
 
 
