@@ -11,7 +11,9 @@ path <- list(data = path_data,
              lui = paste0(path_data, "lui/"),
              plots = paste0(path_data, "plots/"),
              rdata = paste0(path_data, "rdata/"),
-             temp = paste0(path_data, "temp/"))
+             temp = paste0(path_data, "temp/"),
+             hyperspectral = paste0(path_data, "hyperspectral/"),
+             lidar = paste0(path_data, "lidar/"))
 rm(path_data)
 
 # Set libraries ----------------------------------------------------------------
@@ -36,6 +38,7 @@ rasterOptions(tmpdir = path$temp)
 # initialise database ---------------------------------------------------------
 
 # connect to server
+library(rPointDB)
 rs <- RemoteSensing$new("http://137.248.191.215:8081",
                         readChar("~/ma/connect_db.txt", file.info("~/ma/connect_db.txt")$size))
 
