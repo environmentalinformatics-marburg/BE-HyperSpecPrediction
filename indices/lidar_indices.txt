@@ -1,0 +1,11 @@
+lidar_index
+AGB
+BE_RD_01
+TCH
+chm_height_max
+chm_height_mean
+chm_height_min
+chm_height_sd
+chm_surface_ratio
+dsm_elevation_sd
+dsm_surface_ratio
