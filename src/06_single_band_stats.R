@@ -2,9 +2,9 @@ library(raster)
 library(dplyr)
 library(reshape2)
 
-hy_fls <- list.files("~/ma/data/hyperspectral", pattern = ".tif$", full.names = TRUE)
-hy_names <- substr(list.files("~/ma/data/hyperspectral", pattern  =".tif$"), 8, 12)
-hy_info <- readRDS("~/ma/data/rdata/hyperspectral_band_info.RDS")
+hy_fls <- list.files("~/ma/data/hyperspectral/10m_plots/", pattern = ".tif$", full.names = TRUE)
+hy_names <- readRDS("~/ma/data/util/AEG_names.RDS")
+hy_info <- readRDS("~/ma/data/util/hyperspectral_band_info.RDS")
 
 
 # function for mean and sd off all bands as one line data frames
@@ -34,5 +34,3 @@ all_bands <- lapply(seq(length(hy_fls)), function(f){
 ab <- do.call(rbind, all_bands)
 
 saveRDS(ab, "~/ma/data/finished_df/single_bands.RDS")
-
-

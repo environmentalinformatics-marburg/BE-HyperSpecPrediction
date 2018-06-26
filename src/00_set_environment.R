@@ -45,8 +45,10 @@ rs <- RemoteSensing$new("http://137.248.191.215:8081",
 # access alb grassland plots --------------------------------------------------
 # load corrected plot locations 
 plots <- readOGR("~/ma/data/plots/plots_corrected.shp")
-pois <- data.frame(name = plots@data$EPID, x = plots@coords[,1], y = plots@coords[,2])
+plots@data$EPID <- as.character(plots@data$EPID)
 
-
+pois <- data.frame(EPID = plots@data$EPID, x = plots@coords[,1], y = plots@coords[,2], stringsAsFactors = FALSE)
+pois <- pois[order(pois$EPID),]
+rownames(pois) <- seq(26)
 
 
