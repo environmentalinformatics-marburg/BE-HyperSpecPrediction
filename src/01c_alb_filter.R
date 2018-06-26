@@ -27,7 +27,7 @@ saveRDS(alb_lui, "~/ma/data/alb/alb_lui.RDS")
 # get plot locations from RS db
 library(rPointDB)
 
-rs <- RemoteSensing$new("http://137.248.191.215:8081", "marvin.ludwig:XXX") # remote server
+# remote server
 rois <- rs$roi_group("be_alb_roi")
 pois <- rs$poi_group("be_alb_poi")
 
@@ -39,9 +39,13 @@ saveRDS(pois, "~/ma/data/plots/alb_pois.RDS")
 rois <- readRDS("~/ma/data/plots/alb_rois.RDS")
 
 rois_grass <- rois[substr(rois$name, 1, 3) == "AEG",]
-rois_points <- data.frame(EPID = rois_grass$name,
+rois_points <- data.frame(EPID = as.character(rois_grass$name),
                           x = unlist(lapply(rois_grass$center, "[[", 1)),
                           y = unlist(lapply(rois_grass$center, "[[", 2)))
+
+# order points
+rois_points <- rois_points[order(rois_points$EPID),]
+rownames(rois_points) <- seq(50)
 
 coordinates(rois_points) <- ~ x + y
 projection(rois_points) <- crs("+init=epsg:32632")
@@ -49,7 +53,11 @@ mapview(rois_points)
 
 writeOGR(rois_points, dsn = "/home/marvin/ma/data/plots/plot_points.shp",
          driver = "ESRI Shapefile", layer = "plot_points")
+
+rois_grass <- rois_grass[order(rois_grass$name),]
 r_poly_coords <- rois_grass$polygon
+
+
 
 r_polygons <- lapply(seq(length(r_poly_coords)), function(p){
   r_polygon <- Polygon(r_poly_coords[[p]])
