@@ -2,15 +2,16 @@
 source("~/ma/BE-HyperSpecPrediction/src/00_set_environment.R")
 
 # load band wavelengths
-band_info <- readRDS("~/ma/data/rdata/hyperspectral_band_info.RDS")
+band_info <- readRDS("~/ma/data/util/hyperspectral_band_info.RDS")
 
 # create list of vegetation indices
 vi <- read.table("~/ma/BE-HyperSpecPrediction/indices/hsdar_indices.txt", header = TRUE, sep = ";")
 vi <- as.character(vi$hsdar)
 
+
 # list hyperspectral files
-hy_fls <- list.files("~/ma/data/hyperspectral/", pattern = ".tif$", full.names = TRUE)
-hy_names <- substr(list.files("~/ma/data/hyperspectral/", pattern = ".tif$", full.names = FALSE), 8, 12)
+hy_fls <- list.files("~/ma/data/hyperspectral/10m_plots/", pattern = ".tif$", full.names = TRUE)
+hy_names <- readRDS("~/ma/data/util/AEG_names.RDS")
 
 # calculate VI, its mean and SD
 vi_stats <- lapply(seq(length(hy_fls)), function(i){
@@ -27,4 +28,4 @@ vi_stats <- lapply(seq(length(hy_fls)), function(i){
   return(data.frame(index = vi, mean = vi_means, sd = vi_sd))
   
 })
-
+saveRDS(vi_stats, "~/ma/data/hyperspectral/10m_vegindex/vegind_stats_plotlist.RDS")
