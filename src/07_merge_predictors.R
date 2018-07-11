@@ -14,6 +14,9 @@ predictors <- join(predictors, data_list$single_bands.RDS, by = "EPID")
 predictors <- join(predictors, data_list$narrow_bands.RDS, by = "EPID")
 predictors <- join(predictors, data_list$lidar_indices.RDS, by = "EPID")
 
+predictors$EPID <- NULL
+
 # targets in another
 targets <- data_list$targets.RDS
+
 
