@@ -1,23 +1,8 @@
 # Set path ---------------------------------------------------------------------
-if(Sys.info()["sysname"] == "Windows"){
-  path_data <- "C:/Users/tnauss/permanent/plygrnd/exploratorien/"
-} else {
-  path_data <- "/home/marvin/ma/data/"
-}
-
-path <- list(data = path_data,
-             forest = paste0(path_data, "forest/"),
-             releves = paste0(path_data, "releves/"),
-             lui = paste0(path_data, "lui/"),
-             plots = paste0(path_data, "plots/"),
-             rdata = paste0(path_data, "rdata/"),
-             temp = paste0(path_data, "temp/"),
-             hyperspectral = paste0(path_data, "hyperspectral/"),
-             lidar = paste0(path_data, "lidar/"))
-rm(path_data)
+source("D:/Ludwig/be/envimaR/R/getEnvi.R")
+p <- getEnvi(root_folder = "D:/Ludwig/be/data/")
 
 # Set libraries ----------------------------------------------------------------
-library(biodivTools) # devtools::install_github("environmentalinformatics-marburg/biodivTools")
 library(doParallel)
 library(grid)
 library(gridExtra)
@@ -28,11 +13,9 @@ library(metTools)  # devtools::install_github("environmentalinformatics-marburg/
 library(raster)
 library(rgdal)
 library(satellite)
-library(satelliteTools)  # devtools::install_github("environmentalinformatics-marburg/satelliteTools")
 library(sp)
 
 # Other settings ---------------------------------------------------------------
-rasterOptions(tmpdir = path$temp)
 
 
 # initialise database ---------------------------------------------------------
@@ -40,15 +23,5 @@ rasterOptions(tmpdir = path$temp)
 # connect to server
 library(rPointDB)
 rs <- RemoteSensing$new("http://137.248.191.215:8081",
-                        readChar("~/ma/connect_db.txt", file.info("~/ma/connect_db.txt")$size))
-
-# access alb grassland plots --------------------------------------------------
-# load corrected plot locations 
-plots <- readOGR("~/ma/data/plots/plots_corrected.shp")
-plots@data$EPID <- as.character(plots@data$EPID)
-
-pois <- data.frame(EPID = plots@data$EPID, x = plots@coords[,1], y = plots@coords[,2], stringsAsFactors = FALSE)
-pois <- pois[order(pois$EPID),]
-rownames(pois) <- seq(26)
-
+                        readChar(paste0(p$util$here, "connect_db.txt"), file.info(paste0(p$util$here, "connect_db.txt"))$size))
 
