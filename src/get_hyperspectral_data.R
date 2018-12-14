@@ -1,4 +1,4 @@
-source("D:/Ludwig/be/BE-HyperSpecPrediction/src/00_set_environment.R", echo = FALSE)
+source("D:/Ludwig/be/BE-HyperSpecPrediction/src/set_environment.R", echo = FALSE)
 
 # download 50x50m hyperspectral data for the available plots in every BE
 # after this script, define the centers for the corrected plot locations in QGIS
@@ -23,7 +23,7 @@ re <- lapply(rois$polygon, extent)
 for(i in seq(length(re))){
   hy <- db_hy$raster(re[[i]])
   if(!is.na(hy[[1]][1,1])){
-    writeRaster(hy, paste0(p$hyperspectral$hainich$here, "hy_", names(re)[i], ".tif" )) 
+    writeRaster(hy, paste0(p$hyperspectral$hainich_50$here, "hy_", names(re)[i], ".tif" )) 
   }
 }
 
@@ -47,7 +47,7 @@ re <- lapply(rois$polygon, extent)
 for(i in seq(length(re))){
   hy <- db_hy$raster(re[[i]])
   if(!is.na(hy[[1]][1,1])){
-    writeRaster(hy, paste0(p$hyperspectral$heide$here, "hy_", names(re)[i], ".tif" )) 
+    writeRaster(hy, paste0(p$hyperspectral$heide_50$here, "hy_", names(re)[i], ".tif" )) 
   }
 }
 
@@ -71,7 +71,7 @@ re <- lapply(rois$polygon, extent)
 for(i in seq(length(re))){
   hy <- db_hy$raster(re[[i]])
   if(!is.na(hy[[1]][1,1])){
-    writeRaster(hy, paste0(p$hyperspectral$alb$here, "hy_", names(re)[i], ".tif" )) 
+    writeRaster(hy, paste0(p$hyperspectral$alb_50$here, "hy_", names(re)[i], ".tif" )) 
   }
 }
 
