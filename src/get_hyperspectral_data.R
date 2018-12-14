@@ -23,7 +23,7 @@ re <- lapply(rois$polygon, extent)
 for(i in seq(length(re))){
   hy <- db_hy$raster(re[[i]])
   if(!is.na(hy[[1]][1,1])){
-    writeRaster(hy, paste0(p$hyperspectral$hainich_50$here, "hy_", names(re)[i], ".tif" )) 
+    writeRaster(hy, paste0(p$hyperspectral$hy_50m$here, "hy_", names(re)[i], ".tif" )) 
   }
 }
 
@@ -47,7 +47,7 @@ re <- lapply(rois$polygon, extent)
 for(i in seq(length(re))){
   hy <- db_hy$raster(re[[i]])
   if(!is.na(hy[[1]][1,1])){
-    writeRaster(hy, paste0(p$hyperspectral$heide_50$here, "hy_", names(re)[i], ".tif" )) 
+    writeRaster(hy, paste0(p$hyperspectral$hy_50m$here, "hy_", names(re)[i], ".tif" )) 
   }
 }
 
@@ -71,7 +71,7 @@ re <- lapply(rois$polygon, extent)
 for(i in seq(length(re))){
   hy <- db_hy$raster(re[[i]])
   if(!is.na(hy[[1]][1,1])){
-    writeRaster(hy, paste0(p$hyperspectral$alb_50$here, "hy_", names(re)[i], ".tif" )) 
+    writeRaster(hy, paste0(p$hyperspectral$hy_50m$here, "hy_", names(re)[i], ".tif" )) 
   }
 }
 

@@ -1,6 +1,9 @@
 # Set path ---------------------------------------------------------------------
 source("D:/Ludwig/be/envimaR/R/getEnvi.R")
 p <- getEnvi(root_folder = "D:/Ludwig/be/data/")
+s <- getEnvi(root_folder = "D:/Ludwig/be/BE-HyperSpecPrediction/")
+
+
 
 # Set libraries ----------------------------------------------------------------
 library(doParallel)

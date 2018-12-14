@@ -16,7 +16,7 @@ pois <- data.frame(name = as.character(plots@data$EPID), x = plots@coords[,1], y
 
 for(j in seq(nrow(pois))){
   hy <- db_hy$raster(extent_diameter(pois$x[j], pois$y[j], 10))
-  writeRaster(hy, paste0(p$hyperspectral$heide_10$here, "hy_10m_", pois$name[j], ".tif" ))
+  writeRaster(hy, paste0(p$hyperspectral$hy_10m$here, "hy_10m_", pois$name[j], ".tif" ))
 }
 
 
@@ -35,7 +35,7 @@ pois <- data.frame(name = as.character(plots@data$EPID), x = plots@coords[,1], y
 
 for(j in seq(nrow(pois))){
   hy <- db_hy$raster(extent_diameter(pois$x[j], pois$y[j], 10))
-  writeRaster(hy, paste0(p$hyperspectral$hainich_10$here, "hy_10m_", pois$name[j], ".tif" ))
+  writeRaster(hy, paste0(p$hyperspectral$hy_10m$here, "hy_10m_", pois$name[j], ".tif" ))
 }
 
 
@@ -53,5 +53,5 @@ pois <- data.frame(name = as.character(plots@data$EPID), x = plots@coords[,1], y
 
 for(j in seq(nrow(pois))){
   hy <- db_hy$raster(extent_diameter(pois$x[j], pois$y[j], 10))
-  writeRaster(hy, paste0(p$hyperspectral$alb_10$here, "hy_10m_", pois$name[j], ".tif" ))
+  writeRaster(hy, paste0(p$hyperspectral$hy_10m$here, "hy_10m_", pois$name[j], ".tif" ))
 }
