@@ -10,3 +10,4 @@ Workflow for the prediction of plant traits and biodiversity on grasslands in th
    * locate 10m centers in GIS, avoid roads, climate stations etc.
 1. crop_hyperspectral_data
 1. vegetation_indices
+1. narrow_range_indices
