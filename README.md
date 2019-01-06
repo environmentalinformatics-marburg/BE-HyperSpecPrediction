@@ -21,7 +21,7 @@ Output format of the data frames:
 | EPID | WL / Index | mean | sd |
 |------|------------|------|----|
 
-Script: plot_based_summary
+Script: plot_based_summary <br/>
 Converted to a data frame with one row per Plot. Because of previous model namings, the column names need to be:
 * Single bands: mean400.4
 * Vegetation index: Carter_mean, Carter_sd
