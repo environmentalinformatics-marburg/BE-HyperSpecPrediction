@@ -21,7 +21,8 @@ Output format of the data frames:
 | EPID | WL / Index | mean | sd |
 |------|------------|------|----|
 
-This gets converted to a data frame with one row per Plot. Because of previous model namings, the column names need to be:
+Script: plot_based_summary
+Converted to a data frame with one row per Plot. Because of previous model namings, the column names need to be:
 * Single bands: mean400.4
 * Vegetation index: Carter_mean, Carter_sd
-* NRI: mean_wl_400_404
+* NRI: mean_wl_400_404 (Wavelength rounded)
