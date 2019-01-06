@@ -37,4 +37,4 @@ vi_table <- do.call(rbind, vi_stats)
 vi_table <- na.omit(vi_table)
 
 
-saveRDS(vi_table, paste0(p$hyperspectral$here, "be_hy_vegetation_indices.RDS"))
+saveRDS(vi_table, paste0(p$aerial_summary$here, "be_hy_vegetation_indices.RDS"))

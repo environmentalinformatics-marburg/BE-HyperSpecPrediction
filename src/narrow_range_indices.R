@@ -39,19 +39,12 @@ nri_stats <- lapply(seq(length(hy_fls)), function(i){
   
   
   nri_s <- nri_stats(hy_nri)
+  nri_s$EPID <- hy_names[i]
   return(nri_s)
   
 })
 
-
-saveRDS(nri_stats, paste0(p$hyperspectral$nri_10m$here, "nri_stats.RDS"))
-
-
-
-
-
-
-
-
+nri_stats <- do.call(rbind, nri_stats)
+saveRDS(nri_stats, paste0(p$aerial_summary$here, "be_hy_nri.RDS"))
 
 
