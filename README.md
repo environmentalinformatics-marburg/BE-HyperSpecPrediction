@@ -36,3 +36,7 @@ the 26 plots of the Alb Exploratory are used in the Scripts:
 
 ## Model validation
 the other two exploratories are used afterwards for model validation on independent regions
+Scripts:
+1. field_data_summary
+1. extract_aeg_model_variables
+1. predict_aeg_hai_sch
