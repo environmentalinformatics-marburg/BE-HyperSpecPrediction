@@ -17,6 +17,8 @@ library(raster)
 library(rgdal)
 library(satellite)
 library(sp)
+library(plyr)
+library(reshape2)
 
 # Other settings ---------------------------------------------------------------
 
