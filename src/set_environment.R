@@ -1,21 +1,20 @@
 # Set path ---------------------------------------------------------------------
-source("D:/Ludwig/be/envimaR/R/getEnvi.R")
-p <- getEnvi(root_folder = "D:/Ludwig/be/data/")
-s <- getEnvi(root_folder = "D:/Ludwig/be/BE-HyperSpecPrediction/")
+source("/home/marvin/repositories/envimaR/R/getEnvi.R")
+p <- getEnvi(root_folder = "/home/marvin/be_hyperspectral/data/")
+s <- getEnvi(root_folder = "/home/marvin/be_hyperspectral/BE-HyperSpecPrediction/")
 
 
 
 # Set libraries ----------------------------------------------------------------
-library(doParallel)
 library(grid)
 library(gridExtra)
 library(rgeos)
 library(ggplot2)
 library(mapview)
-library(metTools)  # devtools::install_github("environmentalinformatics-marburg/metTools")
+#library(metTools)  # devtools::install_github("environmentalinformatics-marburg/metTools")
 library(raster)
 library(rgdal)
-library(satellite)
+#library(satellite)
 library(sp)
 library(plyr)
 library(reshape2)

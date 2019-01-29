@@ -3,9 +3,9 @@
 library(Metrics)
 library(reshape2)
 library(ggplot2)
-source("/home/hanna/repositories/envimaR/R/getEnvi.R")
+source("/home/marvin/repositories/envimaR/R/getEnvi.R")
 
-p <- getEnvi("/home/hanna/plant_traits/data/")
+p <- getEnvi("/home/marvin/be_hyperspectral/data/")
 
 
 res <- readRDS(paste0(p$results$here, "trait_prediction.RDS"))
